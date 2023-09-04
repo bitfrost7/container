@@ -1,4 +1,4 @@
-package linklist
+package linkedlist
 
 type DulNode struct {
 	Data interface{}

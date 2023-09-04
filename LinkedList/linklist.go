@@ -1,4 +1,4 @@
-package linklist
+package linkedlist
 
 // 链表节点
 type Node struct {
