@@ -1,34 +1,29 @@
 package linkedlist
 
-// 链表节点
+// Node 链表节点
 type Node struct {
 	Data interface{}
 	Next *Node
 }
 
-// 单向链表
+// LinkList 单向链表
 type LinkList struct {
 	Head   *Node
 	Length int
 }
 
-// 初始化链表
+// Init 初始化链表
 func (l *LinkList) Init() {
 	l.Head = &Node{}
 	l.Length = 0
 }
 
-// 获取链表长度
-func (l *LinkList) GetLength() int {
-	return l.Length
-}
-
-// 判断链表是否为空
+// IsEmpty 判断链表是否为空
 func (l *LinkList) IsEmpty() bool {
 	return l.Length == 0
 }
 
-// 插入节点
+// Insert 插入节点
 func (l *LinkList) Insert(data interface{}) {
 	node := &Node{Data: data}
 	node.Next = l.Head.Next
@@ -36,7 +31,7 @@ func (l *LinkList) Insert(data interface{}) {
 	l.Length++
 }
 
-// 使用数组初始化链表
+// InitWithArray 使用数组初始化链表
 func (l *LinkList) InitWithArray(arr []interface{}) {
 	l.Init()
 	for _, v := range arr {
@@ -44,7 +39,7 @@ func (l *LinkList) InitWithArray(arr []interface{}) {
 	}
 }
 
-// 删除第n个节点
+// Delete 删除第n个节点
 func (l *LinkList) Delete(n int) {
 	if n > l.Length {
 		return
@@ -57,7 +52,7 @@ func (l *LinkList) Delete(n int) {
 	l.Length--
 }
 
-// 删除第一个值为data的节点
+// DeleteWithData 删除第一个值为data的节点
 func (l *LinkList) DeleteWithData(data interface{}) {
 	dummy := &Node{Next: l.Head}
 	node := dummy
@@ -71,7 +66,7 @@ func (l *LinkList) DeleteWithData(data interface{}) {
 	}
 }
 
-// 删除所有值为data的节点
+// DeleteAllWithData 删除所有值为data的节点
 func (l *LinkList) DeleteAllWithData(data interface{}) {
 	dummy := &Node{Next: l.Head}
 	node := dummy
@@ -85,7 +80,7 @@ func (l *LinkList) DeleteAllWithData(data interface{}) {
 	}
 }
 
-// 获取第n个节点的值
+// Get 获取第n个节点的值
 func (l *LinkList) Get(n int) interface{} {
 	if n > l.Length {
 		return nil
@@ -97,7 +92,7 @@ func (l *LinkList) Get(n int) interface{} {
 	return node.Data
 }
 
-// 获取第一个值为data的节点的序号
+// GetIndex 获取第一个值为data的节点的序号
 func (l *LinkList) GetIndex(data interface{}) int {
 	node := l.Head.Next
 	for i := 0; i < l.Length; i++ {
@@ -109,7 +104,7 @@ func (l *LinkList) GetIndex(data interface{}) int {
 	return -1
 }
 
-// 获取第一个值为data的节点
+// GetNode 获取第一个值为data的节点
 func (l *LinkList) GetNode(data interface{}) *Node {
 	node := l.Head.Next
 	for i := 0; i < l.Length; i++ {
@@ -121,8 +116,8 @@ func (l *LinkList) GetNode(data interface{}) *Node {
 	return nil
 }
 
-// 获取链表的最后一个节点
-func (l *LinkList) GetLastNode() *Node {
+// LastNode 获取链表的最后一个节点
+func (l *LinkList) LastNode() *Node {
 	node := l.Head
 	for node.Next != nil {
 		node = node.Next
@@ -130,7 +125,7 @@ func (l *LinkList) GetLastNode() *Node {
 	return node
 }
 
-// 更新第n个节点的值
+// Update 更新第n个节点的值
 func (l *LinkList) Update(n int, data interface{}) {
 	if n > l.Length {
 		return
