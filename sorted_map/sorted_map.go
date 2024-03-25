@@ -28,9 +28,9 @@ func (m *SortedMap[k]) Delete(key k) {
 	m.l.Remove(e)
 }
 
-func (m *SortedMap[k]) Search(key k) (v any, ok bool) {
-	e, exist := m.m[key]
-	if !exist {
+func (m *SortedMap[k]) Search(key k) (v any, exist bool) {
+	e, ok := m.m[key]
+	if !ok {
 		return nil, false
 	}
 	return e.Value, true
